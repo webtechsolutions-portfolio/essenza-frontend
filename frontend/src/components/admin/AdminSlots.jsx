@@ -150,7 +150,7 @@ export default function AdminSlots({ date, slotsApi }) {
 
   return (
     <div className="space-y-4">
-      <div className="flex gap-2 items-center">
+      <div className="flex flex-wrap gap-2 items-center">
         <button
           type="button"
           className={`px-3 py-1 rounded-xl border ${mode === "generate" ? "bg-neutral-900 text-white" : "bg-white"}`}
@@ -176,7 +176,7 @@ export default function AdminSlots({ date, slotsApi }) {
               {[15, 20, 30, 60].map((s) => <option key={s} value={s}>{s} min</option>)}
             </select>
           </div>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             <button onClick={handleGenerateSave} className="rounded-xl bg-neutral-900 text-white px-4 py-2" disabled={saving}>
               {saving ? "Zapis..." : "Zapisz godziny pracy"}
             </button>
@@ -187,7 +187,7 @@ export default function AdminSlots({ date, slotsApi }) {
         </>
       ) : (
         <>
-          <div className="flex gap-2 items-center">
+          <div className="flex  flex-wrap gap-2 items-center">
             <input type="time" className="border rounded-xl px-3 py-2" value={timeInput} onChange={(e) => setTimeInput(e.target.value)} />
             <button type="button" onClick={addManualTime} className="rounded-xl bg-neutral-900 text-white px-4 py-2">Dodaj godzinę</button>
             <button type="button" onClick={() => setManualTimes([])} className="rounded-xl border px-4 py-2">Wyczyść listę</button>

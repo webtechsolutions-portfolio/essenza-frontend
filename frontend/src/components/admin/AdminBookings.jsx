@@ -26,7 +26,7 @@ export default function AdminBookings({ bookings, onCancel, onConfirm }) {
   return (
     <div className="space-y-2">
       {/* Filtry */}
-      <div className="flex gap-2 mb-2 text-sm">
+      <div className="flex flex-wrap gap-2 mb-2 text-sm">
         {["all", "pending", "confirmed", "canceled"].map((f) => (
           <button
             key={f}
@@ -58,7 +58,7 @@ export default function AdminBookings({ bookings, onCancel, onConfirm }) {
               className="border rounded-xl cursor-pointer overflow-hidden"
               onClick={() => setExpandedId(expanded ? null : b._id)}
             >
-              <div className="flex items-center justify-between p-2">
+              <div className="flex flex-wrap items-center justify-between p-2">
                 <div className="text-sm font-medium flex items-center gap-2">
                   {b.name} • {b.phone} •{" "}
                   <span
@@ -77,7 +77,7 @@ export default function AdminBookings({ bookings, onCancel, onConfirm }) {
                       : "Anulowana"}
                   </span>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex flex-wrap gap-2">
                   {b.status === "pending" && (
                     <button
                       className="p-2 rounded-xl hover:bg-green-50 text-green-600"
