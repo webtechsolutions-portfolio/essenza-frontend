@@ -12,39 +12,37 @@ export default function AdminPanel({ slotsApi }) {
   const [date, setDate] = useState(normalizeDate(new Date()));
 
   return (
-    <div className="min-h-screen bg-[#faf7f4] p-6">
-      <div className="max-w-4xl mx-auto space-y-6">
-        <h1 className="text-2xl font-semibold flex items-center gap-2">
-          <ShieldCheck /> Panel administratora
-        </h1>
+    <div className="min-h-screen bg-[#faf7f4] p-6 overflow-x-hidden">
+  <div className="max-w-4xl mx-auto space-y-6">
+    <h1 className="text-2xl font-semibold flex items-center gap-2">
+      <ShieldCheck /> Panel administratora
+    </h1>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          {/* Kalendarz */}
-          <div className="h-[400px] overflow-hidden">
-            <MonthCalendar
-              value={date}
-              onChange={(d) => setDate(normalizeDate(d))}
-              highlightedKeys={[toKey(date)]}
-            />
-          </div>
+    <div className="grid md:grid-cols-2 gap-6">
+      {/* Kalendarz */}
+      <div className="h-[400px] overflow-hidden w-full max-w-full">
+        <MonthCalendar
+          value={date}
+          onChange={(d) => setDate(normalizeDate(d))}
+          highlightedKeys={[toKey(date)]}
+        />
+      </div>
 
-          {/* Sloty + rezerwacje */}
-          <div className="space-y-4">
-            {/* Zarządzanie slotami i ręczne rezerwacje */}
-            <AdminSlots date={date} slotsApi={slotsApi} />
+      {/* Sloty + rezerwacje */}
+      <div className="space-y-4 w-full max-w-full">
+        <AdminSlots date={date} slotsApi={slotsApi} />
 
-            {/* Lista rezerwacji */}
-            <div className="pt-4 border-t">
-              <div className="text-sm font-medium mb-2">Rezerwacje</div>
-              <AdminBookings
-                bookings={slotsApi.bookings}
-                onCancel={slotsApi.cancelBooking}
-                onConfirm={slotsApi.confirmBooking}
-              />
-            </div>
-          </div>
+        <div className="pt-4 border-t">
+          <div className="text-sm font-medium mb-2">Rezerwacje</div>
+          <AdminBookings
+            bookings={slotsApi.bookings}
+            onCancel={slotsApi.cancelBooking}
+            onConfirm={slotsApi.confirmBooking}
+          />
         </div>
       </div>
     </div>
+  </div>
+</div>
   );
 }
